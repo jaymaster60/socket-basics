@@ -12,3 +12,20 @@ console.log(message.text);
 
 
 });
+
+//ha$ndles submitting of new message
+var $form= jQuery('#message-form');
+
+$form.on('submit', function(event){
+event.preventDefault();
+var $message= $form.find('input[name=message]');
+
+socket.emit('message', {
+text: $form.find('input[name=message]').val()
+
+
+});
+// nach dem enter drücken, ist der Box wieder leer
+$message.val('');
+
+});
