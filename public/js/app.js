@@ -7,10 +7,11 @@ console.log('connected to socket.io server!');
 });
 
 socket.on('message',function(message){
+	var momentTimestamp = moment.utc(message.timestamp);
 console.log('new message: ');
 console.log(message.text);
 
-jQuery('.messages').append('<p>' + message.text +'</p>')
+jQuery('.messages').append('<p><strong>' + momentTimestamp.local().format('HH:mm a') + ': </strong>' + message.text +'</p>')
 
 
 });
@@ -23,7 +24,7 @@ event.preventDefault();
 var $message= $form.find('input[name=message]');
 
 socket.emit('message', {
-text: $form.find('input[name=message]').val()
+text: $message.val()
 
 
 });
