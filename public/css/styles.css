@@ -1,0 +1,7 @@
+.vertical-center {
+min-height: 100vh;
+margin:o;
+display: flex;
+align-items: center;
+
+}
